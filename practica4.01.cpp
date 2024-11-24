@@ -26,7 +26,7 @@ bool sonPerpendiculares(Punto a1, Punto a2, Punto b1, Punto b2) {
 
 int interseccionLineas(Punto a1, Punto a2, Punto b1, Punto b2) {
     if (sonParalelas(a1, a2, b1, b2)) {
-        return 0; // Son paralelas
+        return 0; 
     }
 
     Punto d1 = {a2.x - a1.x, a2.y - a1.y};
@@ -39,20 +39,20 @@ int interseccionLineas(Punto a1, Punto a2, Punto b1, Punto b2) {
     float t = productoCruzado(delta, d1) / cruz1;
 
     if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
-        return 1; // Se cruzan
+        return 1;
     }
 
-    return -1; // No se cruzan ni son paralelas
+    return -1; 
 }
 
 int interseccionLineas(Punto a1, Punto a2, Punto b1, Punto b2, bool perpendiculares) {
     if (perpendiculares) {
         if (sonParalelas(a1, a2, b1, b2)) {
-            return 0; // Son paralelas
+            return 0; 
         } else if (sonPerpendiculares(a1, a2, b1, b2)) {
-            return 1; // Son perpendiculares
+            return 1; 
         } else {
-            return -1; // No son paralelas ni perpendiculares
+            return -1; 
         }
     } else {
         return interseccionLineas(a1, a2, b1, b2);
@@ -67,7 +67,7 @@ int main() {
     cin >> a1.x >> a1.y >> a2.x >> a2.y;
     cout << "Ingrese las coordenadas de la segunda linea (x1 y1 x2 y2): ";
     cin >> b1.x >> b1.y >> b2.x >> b2.y;
-    cout << "¿Desea comprobar si son perpendiculares? (1 para si, 0 para no): ";
+    cout << "Desea comprobar si son perpendiculares? (1 para si, 0 para no): ";
     cin >> perpendiculares;
 
     int resultado = interseccionLineas(a1, a2, b1, b2, perpendiculares);
